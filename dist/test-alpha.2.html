@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0-alpha.2/dist/chart.js"></script>
+        <script src="./chartjs-chart-mybar.js"></script>
+    </head>
+    <body>
+        <div><canvas></canvas></div>
+        <script>
+            const ctx = document.querySelector('canvas').getContext('2d')
+            new Chart(ctx, {
+                type: 'myBar',
+                data: {
+                    labels: ['A', 'B'],
+                    datasets: [
+                    {
+                        label: 'DS1',
+                        data: [1,2]
+                    }
+                    ]
+                }
+            });
+        </script>
+    </body>
+</html>
