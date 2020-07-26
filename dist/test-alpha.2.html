@@ -6,18 +6,19 @@
     <body>
         <div><canvas></canvas></div>
         <script>
-            const ctx = document.querySelector('canvas').getContext('2d')
-            new Chart(ctx, {
-                type: 'myBar',
-                data: {
-                    labels: ['A', 'B'],
-                    datasets: [
-                    {
-                        label: 'DS1',
-                        data: [1,2]
-                    }
-                    ]
-                }
+            const ctx = document.querySelector('canvas').getContext('2d');
+            // eslint-disable-next-line no-unused-vars,no-undef
+            const chart = new Chart(ctx, {
+            	type: 'myBar',
+            	data: {
+            		labels: ['A', 'B'],
+            		datasets: [
+            			{
+            				label: 'DS1',
+            				data: [1, 2]
+            			}
+            		]
+            	}
             });
         </script>
     </body>

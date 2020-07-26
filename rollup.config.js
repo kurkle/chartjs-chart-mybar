@@ -1,10 +1,10 @@
 /* eslint-disable import/no-commonjs */
-/* eslint-env es6 */
 
 const babel = require('rollup-plugin-babel');
 const resolve = require('@rollup/plugin-node-resolve');
 const terser = require('rollup-plugin-terser').terser;
 const pkg = require('./package.json');
+const chartjs = require('rollup-plugin-chartjs-globals');
 
 const banner = `/*!
  * ${pkg.name} v${pkg.version}
@@ -13,10 +13,6 @@ const banner = `/*!
  * Released under the ${pkg.license} license
  */`;
 
- function globals(id) {
-
- }
-
 module.exports = [
 	{
 		input: 'src/index.js',
@@ -24,17 +20,10 @@ module.exports = [
 			file: `dist/${pkg.name}.js`,
 			banner,
 			format: 'umd',
-			indent: false,
-			globals: (id) =>
-				id === 'chart.js'
-					? 'Chart'
-					: id.startsWith('chart.js/helpers/')
-						? ['core', 'color', 'extras'].includes(id.substr(17))
-							? 'Chart.helpers'
-							: 'Chart.helpers.' + id.substr(17)
-						: undefined,
+			indent: false
 		},
 		plugins: [
+			chartjs(),
 			resolve(),
 			babel(),
 		],
@@ -45,17 +34,10 @@ module.exports = [
 		output: {
 			file: `dist/${pkg.name}.min.js`,
 			format: 'umd',
-			indent: false,
-			globals: (id) =>
-				id === 'chart.js'
-					? 'Chart'
-					: id.startsWith('chart.js/helpers/')
-						? ['core', 'color', 'extras'].includes(id.substr(17))
-							? 'Chart.helpers'
-							: 'Chart.helpers.' + id.substr(17)
-						: undefined,
+			indent: false
 		},
 		plugins: [
+			chartjs(),
 			resolve(),
 			babel(),
 			terser({

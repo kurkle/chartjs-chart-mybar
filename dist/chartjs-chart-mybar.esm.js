@@ -1,5 +1,5 @@
 /*!
- * chartjs-chart-mybar v0.0.1
+ * chartjs-chart-mybar v0.1.0
  * https://github.com/kurkle/chartjs-chart-mybar#readme
  * (c) 2020 Jukka Kurkela
  * Released under the MIT license
@@ -16,4 +16,4 @@ MyBarController.defaults = BarController.defaults;
 MyBarController.color = color;
 MyBarController.raf = requestAnimFrame;
 
-export { MyBarController };
+export default MyBarController;

@@ -1,1 +1,1 @@
-export {default as MyBarController} from './controller';
+export {default} from './controller';

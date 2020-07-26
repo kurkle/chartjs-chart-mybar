@@ -1,12 +1,12 @@
 {
   "name": "chartjs-chart-mybar",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Chart.js module for creating mybar charts",
   "main": "dist/chartjs-chart-mybar.js",
   "module": "dist/chartjs-chart-mybar.esm.js",
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -37,8 +37,10 @@
     "eslint": "^6.8.0",
     "eslint-config-chartjs": "^0.2.0",
     "eslint-config-esnext": "^4.1.0",
+    "eslint-plugin-html": "^6.0.2",
     "rollup": "^2.21.0",
     "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-chartjs-globals": "^0.1.1",
     "rollup-plugin-terser": "^5.3.0"
   },
   "peerDependencies": {
