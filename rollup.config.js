@@ -1,7 +1,7 @@
 /* eslint-disable import/no-commonjs */
 
 const babel = require('rollup-plugin-babel');
-const resolve = require('@rollup/plugin-node-resolve');
+const {nodeResolve} = require('@rollup/plugin-node-resolve');
 const terser = require('rollup-plugin-terser').terser;
 const pkg = require('./package.json');
 const chartjs = require('rollup-plugin-chartjs-globals');
@@ -24,7 +24,7 @@ module.exports = [
 		},
 		plugins: [
 			chartjs(),
-			resolve(),
+			nodeResolve(),
 			babel(),
 		],
 		external: (e) => e === 'chart.js' || e.startsWith('chart.js/'),
@@ -38,7 +38,7 @@ module.exports = [
 		},
 		plugins: [
 			chartjs(),
-			resolve(),
+			nodeResolve(),
 			babel(),
 			terser({
 				output: {
@@ -60,7 +60,7 @@ module.exports = [
 			}
 		},
 		plugins: [
-			resolve()
+			nodeResolve()
 		],
 		external: (e) => e === 'chart.js' || e.startsWith('chart.js/'),
 	}

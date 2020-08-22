@@ -7,10 +7,12 @@
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('chart.js'), require('chart.js/helpers/color'), require('chart.js/helpers/extras')) :
 typeof define === 'function' && define.amd ? define(['chart.js', 'chart.js/helpers/color', 'chart.js/helpers/extras'], factory) :
-(global = global || self, factory(global.Chart, global.Chart.helpers, global.Chart.helpers));
-}(this, function (Chart, color, extras) { 'use strict';
+(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Chart, global.Chart.helpers, global.Chart.helpers));
+}(this, (function (Chart, color, extras) { 'use strict';
 
-var Chart__default = 'default' in Chart ? Chart['default'] : Chart;
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var Chart__default = /*#__PURE__*/_interopDefaultLegacy(Chart);
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
@@ -32,6 +34,6 @@ MyBarController.defaults = Chart.BarController.defaults;
 MyBarController.color = color.color;
 MyBarController.raf = extras.requestAnimFrame;
 
-Chart__default.register(MyBarController);
+Chart__default['default'].register(MyBarController);
 
-}));
+})));
