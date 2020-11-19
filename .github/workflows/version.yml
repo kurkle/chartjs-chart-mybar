@@ -20,9 +20,7 @@ jobs:
         run: |
           git config --global user.email "kurkle@gmail.com"
           git config --global user.name "kurkle"
-          tag=$(npm version ${version})
-          git push
-          git tag -a $tag -m "Release $tag"
-          git push
+          npm version ${version}
+          git push --tags
         env:
           version: ${{ github.event.inputs.version }}
