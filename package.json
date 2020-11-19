@@ -1,6 +1,6 @@
 {
   "name": "chartjs-chart-mybar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Chart.js module for creating mybar charts",
   "main": "dist/chartjs-chart-mybar.js",
   "module": "dist/chartjs-chart-mybar.esm.js",
