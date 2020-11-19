@@ -16,6 +16,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm version ${version}
+      - run: |
+          git config --global user.email "kurkle@gmail.com"
+          git config --global user.name "kurkle"
+          npm version ${version}
         env:
           version: ${{ github.event.inputs.version }}
