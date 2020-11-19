@@ -9,7 +9,7 @@ on:
         required: true
 
 jobs:
-  build:
+  update-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,5 +20,6 @@ jobs:
           git config --global user.email "kurkle@gmail.com"
           git config --global user.name "kurkle"
           npm version ${version}
+          git push
         env:
           version: ${{ github.event.inputs.version }}
