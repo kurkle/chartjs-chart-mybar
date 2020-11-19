@@ -14,15 +14,23 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - id: version
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: |
+      - id: version
+        run: |
           git config --global user.email "kurkle@gmail.com"
           git config --global user.name "kurkle"
           echo "::set-output name=version::$(npm version ${version})"
           git push
         env:
           version: ${{ github.event.inputs.version }}
+  tag:
+    needs: npm-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create tag
+        run: echo create tag ${version}
+        env:
+          version: ${{ needs.npm-version.outputs.version }}
