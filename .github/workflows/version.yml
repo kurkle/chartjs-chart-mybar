@@ -26,11 +26,3 @@ jobs:
           git push
         env:
           version: ${{ github.event.inputs.version }}
-  tag:
-    needs: npm-version
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create tag
-        run: echo create tag ${version}
-        env:
-          version: ${{ needs.npm-version.outputs.version }}
