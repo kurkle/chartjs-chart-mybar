@@ -21,6 +21,7 @@ jobs:
           git config --global user.email "kurkle@gmail.com"
           git config --global user.name "kurkle"
           npm version ${version}
+          git push
           git push --tags
         env:
           version: ${{ github.event.inputs.version }}
