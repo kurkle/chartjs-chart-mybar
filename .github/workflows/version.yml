@@ -9,9 +9,12 @@ on:
         required: true
 
 jobs:
-  update-version:
+  version:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
+      - id: version
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
@@ -19,7 +22,15 @@ jobs:
       - run: |
           git config --global user.email "kurkle@gmail.com"
           git config --global user.name "kurkle"
-          npm version ${version}
+          ouput=$(npm version ${version})
+          echo "::set-output name=version::$output"
           git push
         env:
           version: ${{ github.event.inputs.version }}
+  tag:
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo create tag ${version}
+        env:
+          version: ${{ needs.version.outputs.version }}
