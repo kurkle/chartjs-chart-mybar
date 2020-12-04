@@ -21,7 +21,10 @@ jobs:
           git config --global user.email "kurkle@gmail.com"
           git config --global user.name "kurkle"
           npm version ${version}
-          git push
-          git push --tags
         env:
           version: ${{ github.event.inputs.version }}
+      - name: Push
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tags: true
